@@ -12,6 +12,21 @@ document.querySelector('button:contains("Button Text")').addEventListener('click
         'buttonLabel': 'Button with specific text',
     });
 });
+
+//OR 
+
+document.querySelectorAll('button').forEach(function(button) {
+    if (button.textContent.trim() === 'Contact me') {
+        button.addEventListener('click', function() {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'customButtonClick',
+                'buttonLabel': 'Button with specific text'
+            });
+        });
+    }
+});
+
 //Replace "Button Text" with the actual text inside the button. However, the :contains() selector is not natively supported by JavaScript, so for this to work, you'd need to use jQuery. Alternatively, you can write a custom function to find a button by its text.
 
 //2. Select by Button Position in the DOM
